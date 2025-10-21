@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\proyecto_pabon_yilber.props" />
+</Project>
