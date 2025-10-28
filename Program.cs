@@ -1,5 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
+using proyecto_pabon_yilber.Data;
 var builder = WebApplication.CreateBuilder(args);
-
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<dbcontex>(options => options.UseNpgsql(connectionString));
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
