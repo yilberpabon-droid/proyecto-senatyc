@@ -1,12 +1,14 @@
 using Microsoft.EntityFrameworkCore;
-using Npgsql.EntityFrameworkCore.PostgreSQL;
 using proyecto_pabon_yilber.Data;
+using proyecto_pabon_yilber.implementacion;
+using proyecto_pabon_yilber.services;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<dbcontex>(options => options.UseNpgsql(connectionString));
-// Add services to the container.
+builder.Services.AddScoped<IUsuarioService, UsuarioServices>();
 builder.Services.AddControllersWithViews();
 
+// Add services to the container.
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
