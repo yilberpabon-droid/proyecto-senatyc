@@ -4,8 +4,12 @@ using proyecto_pabon_yilber.implementacion;
 using proyecto_pabon_yilber.services;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<dbcontex>(options => options.UseNpgsql(connectionString));
+builder.Services.AddDbContext<dbcontex>(options =>
+ options.UseNpgsql(connectionString)
+ );
+
 builder.Services.AddScoped<IUsuarioService, UsuarioServices>();
+builder.Services.AddScoped<IPasswordservices, passwordservices>(); 
 builder.Services.AddControllersWithViews();
 
 // Add services to the container.

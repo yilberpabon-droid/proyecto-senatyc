@@ -1,0 +1,33 @@
+@model proyecto_pabon_yilber.Models.Usuariomodel
+
+<div class="container text- w-75">
+    <h1>Registrarse</h1>
+    <form asp-action="Register" asp-controller="User" method="post">
+        <div class="form-group">
+            <label for="Usuario_Nombre">Nombre</label>
+            <input type="text" class="form-control" id="Usuario_Nombre" name="Usuario_Nombre" asp-for="Usuario_Nombre"
+                required />
+            <span asp-validation-for="Usuario_Nombre" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="Usuario_Apellido">Apellido</label>
+            <input type="text" class="form-control" id="Usuario_Apellido" name="Usuario_Apellido"
+          asp-for="Usuario_Apellido" required />
+            <span asp-validation-for="Usuario_Apellido"></span>
+    
+        </div>
+        <div class="form-group">
+            <label for="Usuario_Correo">Correo</label>
+            <input type="text" class="form-control" id="Usuario_Correo" name="Usuario_Correo"
+          asp-for="Usuario_Correo" required />
+            <span asp-validation-for="Usuario_Correo"></span>
+        </div>
+        <div class="form-group">
+            <label for="Usuario_Contrasena">Contraseña</label>
+            <input type="text" class="form-control" id="Usuario_Contrasena" name="Usuario_Contrasena"
+          asp-for="Usuario_Contrasena" required />
+            <span asp-validation-for="Usuario_Contrasena"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+</div>

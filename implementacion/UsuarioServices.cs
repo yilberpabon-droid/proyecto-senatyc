@@ -13,19 +13,28 @@ namespace proyecto_pabon_yilber.implementacion
     public class UsuarioServices : IUsuarioService
     {
         private readonly dbcontex dbContext;
+        private readonly IPasswordservices passwordservices;
 
-        public UsuarioServices(dbcontex dbContext)
+
+        public UsuarioServices(dbcontex dbContext, IPasswordservices passwordservices)
         {
+
             this.dbContext = dbContext;
+            this.passwordservices = passwordservices;
         }
-        public async void CrearUsuario(Usuariomodel pitufo)
+        public async Task CrearUsuario(Usuariomodel pitufo)
         {
             if (pitufo != null)
             {
+                pitufo.Usuario_Contrasena = passwordservices.Hashpassword(pitufo.Usuario_Contrasena);
                 dbContext.Usuarios.Add(pitufo);
                 await dbContext.SaveChangesAsync();
             }
         }
 
+    }
+
+    internal class dbContext
+    {
     }
 }

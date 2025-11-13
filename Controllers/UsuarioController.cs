@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -21,17 +22,25 @@ namespace proyecto_pabon_yilber.Controllers
         }
         [HttpPost]
         [Route("register")]
-        public IActionResult Register(Usuariomodel usuario)
+        public async Task<IActionResult> Register(Usuariomodel usuario)
         {
-            if (usuario != null)
+            if (ModelState.IsValid)
+
             {
-                usuarioService.CrearUsuario(usuario);
-                return Ok("Usuario creado");
+                await usuarioService.CrearUsuario(usuario);
+                return RedirectToAction("Index", "Home");
             }
-            else
-            {
-                return BadRequest("Usuario no puede ser null");
-            }
+            return View(usuario);
         }
+        [HttpGet]
+        [Route("register")]
+        public IActionResult Register()
+        {
+            return View();
+
+        }
+
+
     }
 }
+
