@@ -13,7 +13,7 @@ builder.Services.AddScoped<IPasswordservices, Passwordservices>();
 builder.Services.AddScoped<ILoginservices, Loginservices>(); 
 builder.Services.AddControllersWithViews();
 
-// Add services to the container.
+// Add services to the container. 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
