@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
@@ -8,24 +9,37 @@ using proyecto_pabon_yilber.services;
 
 namespace proyecto_pabon_yilber.implementacion
 {
-    public class passwordservices : IPasswordservices
+    public class Passwordservices : IPasswordservices
     {
-        public string Hashpassword(string password)
+
+        public bool CompararContrasenas(string Contrasena, string ContrasenaBD, string Salt)
+        {
+           byte[] SaltBytes = Convert.FromBase64String(Salt);
+           string hsshedPasswordTocheck = EncryptPassword(Contrasena,SaltBytes);
+           return hsshedPasswordTocheck == ContrasenaBD;
+        }
+
+        public string Hashpassword(string password, out string salt)
         {
             string hashedPassword;
-            byte[] salt = new byte[128 / 8];
+            byte[] saltBytes = new byte[128 / 8];
             using (var rng = RandomNumberGenerator.Create())
             {
-                rng.GetBytes(salt);
+                rng.GetBytes(saltBytes);
             }
-            hashedPassword = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: password,
-                salt: salt,
+            salt = Convert.ToBase64String(saltBytes );
+            hashedPassword = EncryptPassword(password, saltBytes);
+            return hashedPassword;
+        }
+        private string EncryptPassword(string Contrasena, byte[] saltBytes)
+        {
+            string hashedPassword = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: Contrasena,
+                salt: saltBytes,
                 prf: KeyDerivationPrf.HMACSHA256,
                 iterationCount: 100000,
                 numBytesRequested: 256 / 8));
             return hashedPassword;
-
         }
     }
 }

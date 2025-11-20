@@ -9,7 +9,8 @@ builder.Services.AddDbContext<dbcontex>(options =>
  );
 
 builder.Services.AddScoped<IUsuarioService, UsuarioServices>();
-builder.Services.AddScoped<IPasswordservices, passwordservices>(); 
+builder.Services.AddScoped<IPasswordservices, Passwordservices>(); 
+builder.Services.AddScoped<ILoginservices, Loginservices>(); 
 builder.Services.AddControllersWithViews();
 
 // Add services to the container.

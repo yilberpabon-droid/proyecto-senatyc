@@ -7,6 +7,8 @@ namespace proyecto_pabon_yilber.services
 {
     public interface IPasswordservices
     {
-        string Hashpassword(string password);
+        string Hashpassword(string password, out String salt);
+        bool CompararContrasenas(string Contrasena, string ContrasenaBD, string Salt);
+
     }
 }

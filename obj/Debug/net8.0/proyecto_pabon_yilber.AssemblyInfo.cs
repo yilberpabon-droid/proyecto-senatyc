@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("proyecto_pabon_yilber")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f92704223459c7fe651c883faf247b205abbe3c4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b139a28f8a0a22b24b0c5086f622e5c0be56f44b")]
 [assembly: System.Reflection.AssemblyProductAttribute("proyecto_pabon_yilber")]
 [assembly: System.Reflection.AssemblyTitleAttribute("proyecto_pabon_yilber")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

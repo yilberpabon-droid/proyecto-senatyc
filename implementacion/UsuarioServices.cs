@@ -26,7 +26,8 @@ namespace proyecto_pabon_yilber.implementacion
         {
             if (pitufo != null)
             {
-                pitufo.Usuario_Contrasena = passwordservices.Hashpassword(pitufo.Usuario_Contrasena);
+                pitufo.Usuario_Contrasena = passwordservices.Hashpassword(pitufo.Usuario_Contrasena, out string salt);
+                pitufo.Usuario_Salt = salt; 
                 dbContext.Usuarios.Add(pitufo);
                 await dbContext.SaveChangesAsync();
             }

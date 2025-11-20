@@ -20,5 +20,8 @@ namespace proyecto_pabon_yilber.Models
         [Required(ErrorMessage = "La contraseña es obligatoria")]
         [MinLength(6, ErrorMessage = "La contraseña debe tener al menos 6 caracteres")]
         public required string Usuario_Contrasena { get; set; } 
+        public string? Usuario_Salt { get; set; } 
+     }
     }
-}  
+  
+    
